@@ -1,0 +1,190 @@
+@font-face {
+    font-family: charter;
+    src: url(fonts/charter-regular.otf);
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: charter;
+    src: url(fonts/charter-bold-italic.otf);
+    font-style: italic;
+    font-weight: 400;
+}
+@font-face {
+    font-family: charter;
+    src: url(fonts/charter-bold.otf);
+    font-style: normal;
+    font-weight: 700;
+}
+@font-face {
+    font-family: charter;
+    src: url(fonts/charter-bold-italic.otf);
+    font-style: italic;
+    font-weight: 700;
+}
+:root {
+    font-size: 18px;
+    --mygray30: #212121;
+    --mygray20: #212429;
+    --mygray15: #424242;
+    --mygray10: #616161;
+}
+html{
+    scroll-behavior: smooth;
+}
+/* (esta propiedad agregada al html hace que el scroll se smooth, por lo tanto cuando hacemos click en los enlaces internos, nos dirigira a la seccion deseada, de una manera smooth) */
+body {
+    color: var(--mygray30);
+    font-family: 'Roboto', sans-serif;
+    /* font-family: charter; */
+}
+a {
+    color:var(--mygray30);
+}
+header {
+    font-size: 14px;
+    width: 188px;
+    color: var(--mygray10);
+    position: absolute;
+    top: 64px;
+    left: -232px;
+    z-index: 1;
+}
+header a {
+    color: var(--mygray10);
+    text-decoration: none;
+    /* (esto sirve para cambiar el color de los enlaces ya que no lo hereda del header si no del a que esta arriba y el text decoration none es para sacar el subrallado, si lo quisieramos agregar un subrallado es text-decoration: underline;) */
+}
+header a:hover{
+    color: var(--mygray30);
+}
+header li{
+    margin-bottom: 16px;
+}
+nav details summary{
+    font-weight: bold;
+    line-height: 24px;
+}
+h1 {
+    font-size: 60px;
+    margin-top: 64px;
+    margin-bottom: 16px;
+    font-weight: normal;
+}
+/* (H1+P UTILIZAMOS ESTE SELECTOR ADYACENTE PARA AFECTAR SOLO AL PRIMER P DENTRO DE H1 no ocupamos h1~p porque el selector de hermano afectaria a mas p si los tuvieramos) */
+/* h1 + p{
+    margin-bottom: 64px
+} */
+hr{
+    /* color: var(--mygray10); el color del hr se pone con el color de border, debo cambiarlo cuando llegue a esa clase */
+    margin: 64px 0px;
+}
+h2 {
+    font-size: 2em;
+    /* el font size en este caso seria de 32px porque el em esta reaccionando a los 16px que tiene por defecto el elemento mas cercano al root (html en este caso) y no esta reaccionando a los 60 px de h1 porque no esta anidado dentro de este, si h2 estuviera anidada dentro de un body con font size de 60px, los px de este h2 serian de 120 no de 32. */
+    margin: 64px 0px 0px;
+    font-weight: normal;
+}
+h2 + .section-content img{
+    margin-bottom: 40px;
+}
+h2 + h3{
+    margin: 40px 0px 24px;
+}
+h3 {
+    font-size: 1.5em;
+    margin-top: 16px;
+    margin-bottom: 24px;
+    font-weight: normal;
+    position: relative;
+    top: 0px;
+    width: fit-content;
+}
+/* El width fit-content hace que el elemento se adapte a lo que está dentro del la etiqueta, tambien le puedes pasar parametros para que se ajuste a un tamaño
+Incluso puedes ahorrarte ese after que crea ese subrayado y solamente colocar  un 
+h3{
+  border-bottom: 3px solid red;
+  width: fit-content;
+}  */
+h3 + p {
+    margin-bottom: 0px;
+}
+.section-content img{
+    margin-top: 40px;
+}
+pre {
+    background: #FEC62E;
+    padding: 40px;
+    font-family: 'roboto';
+    line-height: 24px;
+}
+blockquote{
+    font-size: 24px;
+    margin: 32px 0px;
+    padding-left: 16px;
+    line-height: 32px;
+    border-left: 4px solid var(--mygray30);
+}
+blockquote span{
+    color: var(--mygray10)
+}
+blockquote span::before{
+    content: '-';
+}
+.header{
+    position: sticky;
+    top: 0;
+}
+.header-content{
+    position: relative;
+}
+.main{
+/* position: relative; */
+}
+.wrapper{
+    width: 902px;
+    margin: auto;
+}
+.main-content{
+    /* padding: 20px; */
+}
+.hero {
+    background-image: linear-gradient(to top, rgba(255, 255, 255, .38), transparent), url('images/patron-1.png');
+    height: 350px;
+}
+.section-content + hr{
+    display: none;
+}
+/* (este section-content + hr hace que si hay un hr adyacente a un section content, este hr se oculte, es para no borrarlo de html) */
+.section-content ul li{
+    margin-bottom: 16px;
+}
+.section-content{
+    margin-top: 164px;
+}
+.section-content:first-of-type{
+margin: 0;
+}
+.section-content ol li{
+    line-height: 24px;
+}
+.section-content {
+    counter-reset: titleList;
+}
+.section-content h3{
+        counter-increment: titleList;
+        padding-bottom: 8px;
+    }
+.section-content h3::before{
+content: counter(titleList) ". ";
+}
+.section-content h3::after{
+    content: '';
+    width: 100%;
+    height: 4px;
+    background: var(--mygray15);
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
